@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Star, User, LayoutGrid, Sparkles, Heart, Menu, X } from 'lucide-react';
-import { LinkedInIcon, DribbbleIcon, GitHubIcon } from './DoodleAssets';
+import { LinkedInIcon, DribbbleIcon, InstagramIcon, GitHubIcon } from './DoodleAssets';
 
 interface NavbarProps {
   onNavigate: (sectionId: string) => void;
@@ -23,24 +23,20 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate, activeSection }) => 
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-[var(--ca-grid-dot)] bg-[var(--ca-surface)]/95 backdrop-blur-md">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-50 w-full bg-transparent">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         
-        {/* Left: Brand Icon */}
+        {/* Left: Brand Smiley Icon */}
         <button
           onClick={() => handleNavClick('home')}
-          className="group relative flex h-11 w-11 items-center justify-center rounded-full border-2 border-[var(--ca-ink)] bg-[var(--ca-pink)] shadow-[2px_2px_0px_#191510] transition-all hover:scale-105 hover:shadow-[3px_3px_0px_#191510] active:scale-95"
+          className="group relative flex h-10 w-10 items-center justify-center rounded-full bg-[#ff4d8d] text-white shadow-sm transition-transform hover:scale-105 active:scale-95"
           aria-label="Home"
         >
           <span className="text-xl leading-none select-none">☺</span>
-          {/* Tooltip badge */}
-          <span className="ca-hand pointer-events-none absolute -bottom-8 left-0 hidden whitespace-nowrap rounded-md bg-[var(--ca-yellow)] px-2 py-0.5 text-sm font-bold text-[var(--ca-ink)] border border-[var(--ca-ink)] shadow-[2px_2px_0px_#191510] group-hover:block">
-            hello!
-          </span>
         </button>
 
         {/* Center: Desktop Navigation Tabs */}
-        <nav className="hidden items-center gap-1.5 md:flex">
+        <nav className="hidden items-center gap-2 md:flex">
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = activeSection === item.id;
@@ -48,10 +44,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate, activeSection }) => 
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className={`ca-mono relative inline-flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-bold uppercase tracking-[0.15em] transition-all duration-150 ${
+                className={`ca-mono relative inline-flex items-center gap-2 rounded-sm px-4 py-1.5 text-xs font-bold uppercase tracking-[0.15em] transition-all duration-150 ${
                   isActive
-                    ? 'border-2 border-[var(--ca-ink)] bg-[var(--ca-yellow)] text-[var(--ca-ink)] shadow-[2px_2px_0px_#191510]'
-                    : 'text-[var(--ca-ink)] hover:bg-[var(--ca-yellow-soft)]/60 hover:text-[var(--ca-ink)]'
+                    ? 'bg-[#ffd857] text-[#191510]'
+                    : 'text-[#191510] hover:text-[#191510]/70'
                 }`}
               >
                 <Icon className={`h-3.5 w-3.5 ${isActive ? 'fill-current' : ''}`} />
@@ -68,36 +64,36 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate, activeSection }) => 
               href="https://linkedin.com"
               target="_blank"
               rel="noreferrer"
-              className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-[var(--ca-ink)] bg-[var(--ca-yellow)] text-[var(--ca-ink)] shadow-[1.5px_1.5px_0px_#191510] transition-transform hover:-translate-y-0.5 hover:shadow-[2.5px_2.5px_0px_#191510]"
+              className="flex h-8 w-8 items-center justify-center rounded-full bg-[#ffd857] text-[#191510] shadow-sm transition-transform hover:-translate-y-0.5"
               aria-label="LinkedIn"
             >
-              <LinkedInIcon className="h-4 w-4" />
+              <LinkedInIcon className="h-3.5 w-3.5" />
             </a>
             <a
               href="https://dribbble.com"
               target="_blank"
               rel="noreferrer"
-              className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-[var(--ca-ink)] bg-[var(--ca-pink)] text-white shadow-[1.5px_1.5px_0px_#191510] transition-transform hover:-translate-y-0.5 hover:shadow-[2.5px_2.5px_0px_#191510]"
+              className="flex h-8 w-8 items-center justify-center rounded-full bg-[#ff4d8d] text-white shadow-sm transition-transform hover:-translate-y-0.5"
               aria-label="Dribbble"
             >
-              <DribbbleIcon className="h-4 w-4" />
+              <DribbbleIcon className="h-3.5 w-3.5" />
             </a>
             <a
-              href="https://github.com"
+              href="https://instagram.com"
               target="_blank"
               rel="noreferrer"
-              className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-[var(--ca-ink)] bg-[var(--ca-green)] text-white shadow-[1.5px_1.5px_0px_#191510] transition-transform hover:-translate-y-0.5 hover:shadow-[2.5px_2.5px_0px_#191510]"
-              aria-label="GitHub"
+              className="flex h-8 w-8 items-center justify-center rounded-full bg-[#16b06a] text-white shadow-sm transition-transform hover:-translate-y-0.5"
+              aria-label="Instagram"
             >
-              <GitHubIcon className="h-4 w-4" />
+              <InstagramIcon className="h-3.5 w-3.5" />
             </a>
           </div>
 
           <button
             onClick={() => handleNavClick('contact')}
-            className="ca-mono inline-flex items-center gap-2 rounded-lg border-2 border-[var(--ca-ink)] bg-white px-4 py-2 text-xs font-bold uppercase tracking-[0.15em] text-[var(--ca-ink)] shadow-[2px_2px_0px_#191510] transition-all hover:bg-[var(--ca-ink)] hover:text-white hover:shadow-[3px_3px_0px_#191510] active:translate-x-0.5 active:translate-y-0.5"
+            className="ca-mono inline-flex items-center gap-2 rounded-sm border border-[#191510] bg-transparent px-4 py-1.5 text-xs font-bold uppercase tracking-[0.15em] text-[#191510] transition-all hover:bg-[#191510] hover:text-white"
           >
-            <Heart className="h-3.5 w-3.5 fill-[var(--ca-pink)] text-[var(--ca-pink)]" />
+            <Heart className="h-3.5 w-3.5 fill-[#191510]" />
             CONTACT
           </button>
         </div>

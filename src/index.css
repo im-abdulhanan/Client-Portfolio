@@ -20,8 +20,8 @@
   --ca-orange: #ff6a35;
   --ca-charcoal: #18181b;
 
-  --font-artsy-display: 'Handjet', monospace;
-  --font-artsy-hand: 'Just Me Again Down Here', cursive;
+  --font-artsy-display: 'Pixelify Sans', 'Silkscreen', monospace;
+  --font-artsy-hand: 'Caveat', cursive;
   --font-artsy-mono: 'Space Mono', monospace;
   --font-artsy-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
@@ -30,22 +30,22 @@ body {
   margin: 0;
   padding: 0;
   font-family: var(--font-artsy-sans);
-  background-color: var(--ca-surface);
-  color: var(--ca-ink);
+  background-color: #faf9f6;
+  color: #191510;
   overflow-x: hidden;
 }
 
-/* Authentic Lined / Ruled Notebook Paper Texture */
+/* Authentic Lined / Ruled Notebook Paper Texture matching reference */
 .ca-grid {
-  background-color: var(--ca-surface);
+  background-color: #fbfbf8;
   background-image: repeating-linear-gradient(
     to bottom,
     transparent 0px,
-    transparent 33px,
-    var(--ca-grid-dot) 33px,
-    var(--ca-grid-dot) 34px
+    transparent 31px,
+    #e6e3da 31px,
+    #e6e3da 32px
   );
-  background-size: 100% 34px;
+  background-size: 100% 32px;
 }
 
 /* Subtle SVG Paper Grain Overlay */
@@ -53,7 +53,7 @@ body {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  opacity: 0.035;
+  opacity: 0.025;
   z-index: 50;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='cn'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23cn)'/%3E%3C/svg%3E");
 }
@@ -61,14 +61,13 @@ body {
 /* Typography Classes */
 .ca-display {
   font-family: var(--font-artsy-display);
-  font-variation-settings: "ELGR" 1, "ELSH" 7;
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  font-weight: 700;
+  letter-spacing: 0.02em;
 }
 
 .ca-hand {
   font-family: var(--font-artsy-hand);
-  line-height: 1.1;
+  line-height: 1;
 }
 
 .ca-mono {

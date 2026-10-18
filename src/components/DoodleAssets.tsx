@@ -1,5 +1,90 @@
 import React from 'react';
 
+// Double wavy underline for "my name is"
+export const DoubleWavyUnderline: React.FC<{ className?: string }> = ({ className = 'w-24 h-4' }) => (
+  <svg viewBox="0 0 100 16" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+    <path
+      d="M4 5C16 2 28 8 40 4C52 1 64 7 76 4C86 1 93 6 98 4"
+      stroke="#191510"
+      strokeWidth="2.4"
+      strokeLinecap="round"
+    />
+    <path
+      d="M7 11C18 9 29 14 42 10C54 8 66 13 78 10C87 8 93 12 96 11"
+      stroke="#191510"
+      strokeWidth="2.2"
+      strokeLinecap="round"
+    />
+  </svg>
+);
+
+// Hand-drawn sketch box in orange around the hero name
+export const SketchyOrangeBox: React.FC<{ className?: string }> = ({ className = '' }) => (
+  <svg
+    viewBox="0 0 540 230"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={`absolute inset-0 w-full h-full pointer-events-none overflow-visible ${className}`}
+    preserveAspectRatio="none"
+  >
+    <path
+      d="M 10 12 C 150 7, 390 10, 528 8 C 533 55, 530 165, 527 218 C 390 223, 140 219, 9 220 C 7 165, 12 55, 10 12 Z"
+      stroke="#ff602b"
+      strokeWidth="3.4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+// Selection bounding box with 4 corner square handles
+export const SelectionBoundingBox: React.FC<{ className?: string }> = ({ className = '' }) => (
+  <div className={`relative bg-neutral-400/25 ${className}`}>
+    <span className="absolute -top-1 -left-1 w-2 h-2 bg-white border border-black/40" />
+    <span className="absolute -top-1 -right-1 w-2 h-2 bg-white border border-black/40" />
+    <span className="absolute -bottom-1 -left-1 w-2 h-2 bg-white border border-black/40" />
+    <span className="absolute -bottom-1 -right-1 w-2 h-2 bg-white border border-black/40" />
+  </div>
+);
+
+// Curved arrow pointing up-right
+export const ArrowUpRightSketch: React.FC<{ className?: string }> = ({ className = 'w-7 h-7' }) => (
+  <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+    <path
+      d="M8 29C14 23 20 16 28 8"
+      stroke="#191510"
+      strokeWidth="2.4"
+      strokeLinecap="round"
+    />
+    <path
+      d="M17 7L28 8L27 19"
+      stroke="#191510"
+      strokeWidth="2.4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+// Curved arrow pointing up-left
+export const ArrowUpLeftSketch: React.FC<{ className?: string }> = ({ className = 'w-7 h-7' }) => (
+  <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+    <path
+      d="M28 29C22 23 16 16 8 8"
+      stroke="#191510"
+      strokeWidth="2.4"
+      strokeLinecap="round"
+    />
+    <path
+      d="M19 7L8 8L9 19"
+      stroke="#191510"
+      strokeWidth="2.4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
 // Hand-drawn squiggle underline
 export const WavyUnderline: React.FC<{ className?: string }> = ({ className = 'w-24 h-3' }) => (
   <svg viewBox="0 0 100 12" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
@@ -13,30 +98,14 @@ export const WavyUnderline: React.FC<{ className?: string }> = ({ className = 'w
   </svg>
 );
 
-// Curved arrow pointing up-right
+// Curved arrow pointing up-right (legacy)
 export const ArrowUpRight: React.FC<{ className?: string }> = ({ className = 'w-8 h-8' }) => (
-  <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
-    <path
-      d="M8 32C14 22 24 14 34 8M34 8H20M34 8V22"
-      stroke="currentColor"
-      strokeWidth="2.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
+  <ArrowUpRightSketch className={className} />
 );
 
-// Curved arrow pointing up-left
+// Curved arrow pointing up-left (legacy)
 export const ArrowUpLeft: React.FC<{ className?: string }> = ({ className = 'w-8 h-8' }) => (
-  <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
-    <path
-      d="M32 32C26 22 16 14 6 8M6 8H20M6 8V22"
-      stroke="currentColor"
-      strokeWidth="2.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
+  <ArrowUpLeftSketch className={className} />
 );
 
 // Hand-drawn starburst / 4-point star
@@ -47,18 +116,17 @@ export const StarDoodle: React.FC<{ className?: string }> = ({ className = 'w-5 
 );
 
 // Spinning 8-petal daisy flower sticker
-export const FlowerSticker: React.FC<{ className?: string }> = ({ className = 'w-8 h-8 text-[var(--ca-magenta)]' }) => (
-  <svg viewBox="0 0 100 100" fill="currentColor" xmlns="http://www.w3.org/2000/svg" className={className}>
-    <circle cx="50" cy="50" r="14" fill="#191510" />
-    <circle cx="50" cy="18" r="14" />
-    <circle cx="50" cy="82" r="14" />
-    <circle cx="18" cy="50" r="14" />
-    <circle cx="82" cy="50" r="14" />
-    <circle cx="27" cy="27" r="14" />
-    <circle cx="73" cy="27" r="14" />
-    <circle cx="27" cy="73" r="14" />
-    <circle cx="73" cy="73" r="14" />
-    <circle cx="50" cy="50" r="10" fill="#f7c948" />
+export const FlowerSticker: React.FC<{ className?: string }> = ({ className = 'w-8 h-8' }) => (
+  <svg viewBox="0 0 100 100" fill="#ff3883" xmlns="http://www.w3.org/2000/svg" className={className}>
+    <circle cx="50" cy="18" r="15" />
+    <circle cx="50" cy="82" r="15" />
+    <circle cx="18" cy="50" r="15" />
+    <circle cx="82" cy="50" r="15" />
+    <circle cx="28" cy="28" r="15" />
+    <circle cx="72" cy="28" r="15" />
+    <circle cx="28" cy="72" r="15" />
+    <circle cx="72" cy="72" r="15" />
+    <circle cx="50" cy="50" r="13" fill="#191510" />
   </svg>
 );
 
@@ -66,8 +134,9 @@ export const FlowerSticker: React.FC<{ className?: string }> = ({ className = 'w
 export const TargetSticker: React.FC<{ className?: string }> = ({ className = 'w-8 h-8' }) => (
   <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
     <circle cx="50" cy="50" r="46" fill="#16b06a" stroke="#191510" strokeWidth="6" />
-    <circle cx="50" cy="50" r="28" fill="#ffffff" />
-    <circle cx="50" cy="50" r="14" fill="#191510" />
+    <circle cx="50" cy="50" r="28" fill="#ffffff" stroke="#191510" strokeWidth="3" />
+    <circle cx="50" cy="50" r="15" fill="#191510" />
+    <circle cx="54" cy="46" r="3.5" fill="#ffffff" />
   </svg>
 );
 

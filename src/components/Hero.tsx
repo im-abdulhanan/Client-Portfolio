@@ -1,140 +1,133 @@
 import React from 'react';
-import { ArrowUpRight, ArrowUpLeft, WavyUnderline, FlowerSticker, TargetSticker } from './DoodleAssets';
-import { ArrowUpRight as LucideArrow } from 'lucide-react';
+import {
+  DoubleWavyUnderline,
+  SketchyOrangeBox,
+  SelectionBoundingBox,
+  ArrowUpRightSketch,
+  ArrowUpLeftSketch,
+  FlowerSticker,
+  TargetSticker,
+} from './DoodleAssets';
 
 interface HeroProps {
-  onContactClick: () => void;
+  onContactClick?: () => void;
+  name?: string;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
+export const Hero: React.FC<HeroProps> = ({ name = 'ROBIN' }) => {
   return (
-    <section className="relative overflow-hidden pt-12 pb-20 sm:pt-20 sm:pb-28">
+    <section className="relative overflow-visible pt-10 pb-20 sm:pt-16 sm:pb-28">
       <div className="relative mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
-        
-        {/* Floating Avatar 1 (Left) */}
-        <div className="ca-wobble absolute -left-2 top-32 hidden sm:block md:left-6 lg:left-12">
-          <div className="group relative">
-            <div className="h-20 w-20 overflow-hidden rounded-full border-4 border-[var(--ca-orange)] bg-white shadow-[0_4px_12px_rgba(25,21,16,0.15)] transition-transform duration-300 group-hover:scale-110">
-              <img
-                src="https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?q=80&w=400&auto=format&fit=crop"
-                alt="Robin Vale Portrait"
-                className="h-full w-full object-cover"
-                loading="eager"
-              />
-            </div>
-            <span className="ca-hand absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-white px-2 py-0.5 text-xs font-bold text-[var(--ca-ink)] border border-[var(--ca-ink)] shadow-[1px_1px_0px_#191510]">
-              hey!
-            </span>
+
+        {/* Floating Avatar 1 (Left) - matching reference */}
+        <div className="ca-wobble absolute left-2 top-28 hidden sm:block md:left-6 lg:left-10">
+          <div className="h-20 w-20 overflow-hidden rounded-full border-4 border-[#ff5a27] bg-white shadow-[0_6px_16px_rgba(25,21,16,0.18)] transition-transform duration-300 hover:scale-105 sm:h-24 sm:w-24">
+            <img
+              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400&auto=format&fit=crop"
+              alt="Robin portrait"
+              className="h-full w-full object-cover"
+              loading="eager"
+            />
           </div>
         </div>
 
-        {/* Floating Avatar 2 (Right) */}
-        <div className="ca-wobble absolute -right-2 top-48 hidden sm:block md:right-6 lg:right-12" style={{ animationDelay: '1.2s' }}>
-          <div className="group relative">
-            <div className="h-20 w-20 overflow-hidden rounded-full border-4 border-[var(--ca-orange)] bg-white shadow-[0_4px_12px_rgba(25,21,16,0.15)] transition-transform duration-300 group-hover:scale-110">
-              <img
-                src="https://images.unsplash.com/photo-1602471615287-d733c59b79c4?q=80&w=400&auto=format&fit=crop"
-                alt="Robin Vale at work"
-                className="h-full w-full object-cover"
-                loading="eager"
-              />
-            </div>
-            <span className="ca-hand absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-white px-2 py-0.5 text-xs font-bold text-[var(--ca-ink)] border border-[var(--ca-ink)] shadow-[1px_1px_0px_#191510]">
-              designing ✨
-            </span>
+        {/* Floating Avatar 2 (Right) - matching reference */}
+        <div
+          className="ca-wobble absolute right-2 top-48 hidden sm:block md:right-6 lg:right-10"
+          style={{ animationDelay: '1.2s' }}
+        >
+          <div className="h-20 w-20 overflow-hidden rounded-full border-4 border-[#ff5a27] bg-white shadow-[0_6px_16px_rgba(25,21,16,0.18)] transition-transform duration-300 hover:scale-105 sm:h-24 sm:w-24">
+            <img
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&auto=format&fit=crop"
+              alt="Robin at work"
+              className="h-full w-full object-cover"
+              loading="eager"
+            />
           </div>
         </div>
 
         {/* "my name is" handwritten label */}
-        <div className="inline-flex flex-col items-center">
-          <span className="ca-hand text-2xl font-bold tracking-wide text-[var(--ca-ink)] sm:text-3xl">
+        <div className="inline-flex flex-col items-center select-none">
+          <span className="ca-hand text-3xl font-medium tracking-normal text-[#191510] sm:text-4xl">
             my name is
           </span>
-          <WavyUnderline className="w-20 text-[var(--ca-ink)] -mt-1 sm:w-24" />
+          <DoubleWavyUnderline className="w-20 -mt-1 sm:w-24 text-[#191510]" />
         </div>
 
-        {/* Hero Name Badge Box with Stickers */}
-        <div className="relative mx-auto mt-6 max-w-xl">
-          
+        {/* Hero Name Badge Box with Stickers & Bounding Outline */}
+        <div className="relative mx-auto mt-6 max-w-lg sm:max-w-xl">
+
           {/* Top Left Tape Sticker: "MADE THINGS" */}
           <div className="absolute -left-2 -top-5 z-20 -rotate-6 sm:-left-6 sm:-top-7">
-            <div className="ca-mono relative inline-flex items-center rounded-full border-2 border-[var(--ca-ink)] bg-[var(--ca-mint)] px-4 py-1 text-xs font-bold uppercase tracking-wider text-[var(--ca-ink)] shadow-[2px_2px_0px_#191510] transition-transform hover:rotate-0 sm:text-sm">
-              <span className="h-1.5 w-1.5 rounded-full bg-[var(--ca-ink)] mr-1.5" />
+            <div className="ca-mono inline-flex items-center rounded-full border border-[#191510]/15 bg-[#a2dcc1] px-4 py-1 text-xs font-bold uppercase tracking-wider text-[#191510] shadow-[0_2px_4px_rgba(25,21,16,0.08)] transition-transform hover:rotate-0 sm:text-sm">
               MADE THINGS
             </div>
           </div>
 
-          {/* Top Right Tape Sticker: "SWEAT THE DETAILS" */}
-          <div className="absolute -right-2 -top-5 z-20 rotate-6 sm:-right-6 sm:-top-7">
-            <div className="ca-mono relative inline-flex items-center rounded-full border-2 border-[var(--ca-ink)] bg-[var(--ca-yellow-soft)] px-4 py-1 text-xs font-bold uppercase tracking-wider text-[var(--ca-ink)] shadow-[2px_2px_0px_#191510] transition-transform hover:rotate-0 sm:text-sm">
-              <span className="h-1.5 w-1.5 rounded-full bg-[var(--ca-ink)] mr-1.5" />
-              SWEAT THE DETAILS
+          {/* Top Right Tape Sticker: "SWEAT THE DETAILS" + Selection Bounding Box */}
+          <div className="absolute -right-2 -top-6 z-20 sm:-right-8 sm:-top-8">
+            <div className="relative">
+              {/* Figma-style Selection Bounding Box with corner handles */}
+              <SelectionBoundingBox className="absolute -left-3 -top-2.5 h-16 w-36 sm:h-20 sm:w-44" />
+
+              <div className="ca-mono relative rotate-6 inline-flex items-center rounded-full border border-[#191510]/15 bg-[#fae8b4] px-4 py-1 text-xs font-bold uppercase tracking-wider text-[#191510] shadow-[0_2px_4px_rgba(25,21,16,0.08)] transition-transform hover:rotate-0 sm:text-sm">
+                SWEAT THE DETAILS
+              </div>
             </div>
           </div>
 
-          {/* Central Doodle Outline Box */}
-          <div className="ca-doodle-box relative border-3 border-[var(--ca-orange)] bg-white/40 px-6 py-6 shadow-[0_4px_16px_rgba(25,21,16,0.06)] sm:px-12 sm:py-8">
-            <h1 className="ca-display text-7xl uppercase tracking-wider text-[var(--ca-ink)] sm:text-9xl md:text-[10.5rem] select-none leading-none">
-              ROBIN
+          {/* Central Sketch Outline Box with 8-bit Pixel Name */}
+          <div className="relative px-8 py-5 sm:px-14 sm:py-7">
+            {/* Hand-drawn sketchy orange outline */}
+            <SketchyOrangeBox />
+
+            <h1 className="ca-display text-7xl uppercase tracking-tight text-[#191510] select-none leading-none sm:text-9xl md:text-[9.5rem]">
+              {name}
             </h1>
           </div>
 
-          {/* Bottom Left Sticky Note: "Product Designer" + Arrow */}
+          {/* Bottom Left Sticky Note: "Product Designer" + Sketch Arrow */}
           <div className="absolute -bottom-8 -left-3 z-20 -rotate-3 sm:-bottom-10 sm:-left-8">
-            <div className="flex items-center gap-1.5">
-              <div className="ca-hand rounded-sm border-2 border-[var(--ca-ink)] bg-[var(--ca-yellow)] px-3 py-1 text-base font-bold text-[var(--ca-ink)] shadow-[2px_2px_0px_#191510] sm:text-lg">
+            <div className="flex items-start gap-1">
+              <div className="ca-hand rounded-sm border border-[#191510]/15 bg-[#ffd857] px-3.5 py-1 text-xl font-bold text-[#191510] shadow-sm sm:text-2xl">
                 Product Designer
               </div>
-              <ArrowUpRight className="h-7 w-7 text-[var(--ca-ink)] stroke-[var(--ca-ink)]" />
+              <ArrowUpRightSketch className="h-7 w-7 -mt-2 -ml-0.5 text-[#191510]" />
             </div>
           </div>
 
-          {/* Bottom Right Sticky Note: "Chicago, IL" + Arrow */}
+          {/* Bottom Right Sticky Note: "Chicago, IL" + Sketch Arrow */}
           <div className="absolute -bottom-8 -right-3 z-20 rotate-3 sm:-bottom-10 sm:-right-8">
-            <div className="flex items-center gap-1.5">
-              <ArrowUpLeft className="h-7 w-7 text-[var(--ca-ink)] stroke-[var(--ca-ink)]" />
-              <div className="ca-hand rounded-sm border-2 border-[var(--ca-ink)] bg-[var(--ca-mint)] px-3 py-1 text-base font-bold text-[var(--ca-ink)] shadow-[2px_2px_0px_#191510] sm:text-lg">
+            <div className="flex items-start gap-1">
+              <ArrowUpLeftSketch className="h-7 w-7 -mt-2 -mr-0.5 text-[#191510]" />
+              <div className="ca-hand rounded-sm border border-[#191510]/15 bg-[#b2e5cf] px-3.5 py-1 text-xl font-bold text-[#191510] shadow-sm sm:text-2xl">
                 Chicago, IL
               </div>
             </div>
           </div>
         </div>
 
-        {/* Monospace Status Pill below Hero */}
-        <div className="mt-16 inline-flex items-center gap-2.5 rounded-full border border-[var(--ca-ink)]/15 bg-white/80 px-4 py-1.5 backdrop-blur-sm sm:mt-20">
-          <span className="ca-blink h-2.5 w-2.5 rounded-full bg-[var(--ca-blue)]" />
-          <span className="ca-mono text-xs font-bold uppercase tracking-[0.2em] text-[var(--ca-ink)] sm:text-sm">
+        {/* Monospace Status Line directly on lined paper */}
+        <div className="mt-14 flex items-center justify-center gap-2.5 sm:mt-18">
+          <span className="ca-blink h-2.5 w-2.5 rounded-full bg-[#2656d6]" />
+          <span className="ca-mono text-xs font-bold uppercase tracking-[0.2em] text-[#191510] sm:text-sm">
             OPEN TO NEW WORK AND GOOD PROBLEMS
           </span>
         </div>
 
         {/* Large Punchy Statement Headline */}
         <div className="mx-auto mt-12 max-w-3xl">
-          <h2 className="text-3xl font-extrabold tracking-tight text-[var(--ca-ink)] sm:text-5xl md:text-6xl sm:leading-tight">
+          <h2 className="text-3xl font-extrabold tracking-tight text-[#191510] sm:text-5xl md:text-6xl sm:leading-tight">
             I design software that{' '}
-            <span className="inline-block align-middle mx-1">
-              <TargetSticker className="h-8 w-8 sm:h-12 sm:w-12 inline-block" />
+            <span className="inline-block align-middle mx-1 -mt-1.5">
+              <TargetSticker className="h-9 w-9 sm:h-12 sm:w-12 inline-block" />
             </span>{' '}
+            <br className="hidden sm:inline" />
             gets out of your way.{' '}
-            <span className="inline-block align-middle mx-1 ca-spin-slow">
-              <FlowerSticker className="h-8 w-8 sm:h-12 sm:w-12 inline-block" />
+            <span className="inline-block align-middle mx-1 -mt-1.5 ca-spin-slow">
+              <FlowerSticker className="h-9 w-9 sm:h-12 sm:w-12 inline-block" />
             </span>
           </h2>
-        </div>
-
-        {/* Hero Call to Action Button */}
-        <div className="mt-10 flex justify-center">
-          <button
-            onClick={onContactClick}
-            className="group relative inline-flex items-center overflow-hidden rounded-md border-3 border-[var(--ca-ink)] bg-[var(--ca-ink)] text-white shadow-[4px_4px_0px_#191510] transition-all hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_#191510] active:translate-x-0.5 active:translate-y-0.5"
-          >
-            <span className="flex h-full items-center justify-center bg-[var(--ca-blue)] px-3.5 py-3.5 text-white transition-colors group-hover:bg-[var(--ca-yellow)] group-hover:text-[var(--ca-ink)]">
-              <LucideArrow className="h-5 w-5" />
-            </span>
-            <span className="ca-mono px-6 py-3.5 text-sm font-bold uppercase tracking-[0.2em]">
-              CONTACT ME
-            </span>
-          </button>
         </div>
 
       </div>
