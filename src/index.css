@@ -1,0 +1,167 @@
+@import "tailwindcss";
+
+:root {
+  --ca-surface: #fdfdfb;
+  --ca-ink: #191510;
+  --ca-gray: #857b69;
+  --ca-chrome: #ece3d1;
+  --ca-tick: #c0b49d;
+  --ca-grid-dot: rgba(25, 21, 16, 0.08);
+  --ca-blue: #2b57d6;
+  --ca-cyan: #b7c6ef;
+  --ca-yellow: #f7c948;
+  --ca-yellow-soft: #f3e2ad;
+  --ca-magenta: #ff4d8d;
+  --ca-pink: #ff4d8d;
+  --ca-green: #16b06a;
+  --ca-mint: #a9dfc6;
+  --ca-pink-soft: #ffc6da;
+  --ca-purple: #a855f7;
+  --ca-orange: #ff6a35;
+  --ca-charcoal: #18181b;
+
+  --font-artsy-display: 'Handjet', monospace;
+  --font-artsy-hand: 'Just Me Again Down Here', cursive;
+  --font-artsy-mono: 'Space Mono', monospace;
+  --font-artsy-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-artsy-sans);
+  background-color: var(--ca-surface);
+  color: var(--ca-ink);
+  overflow-x: hidden;
+}
+
+/* Authentic Lined / Ruled Notebook Paper Texture */
+.ca-grid {
+  background-color: var(--ca-surface);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 33px,
+    var(--ca-grid-dot) 33px,
+    var(--ca-grid-dot) 34px
+  );
+  background-size: 100% 34px;
+}
+
+/* Subtle SVG Paper Grain Overlay */
+.ca-grain-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  z-index: 50;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='cn'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23cn)'/%3E%3C/svg%3E");
+}
+
+/* Typography Classes */
+.ca-display {
+  font-family: var(--font-artsy-display);
+  font-variation-settings: "ELGR" 1, "ELSH" 7;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.ca-hand {
+  font-family: var(--font-artsy-hand);
+  line-height: 1.1;
+}
+
+.ca-mono {
+  font-family: var(--font-artsy-mono);
+  letter-spacing: 0.1em;
+}
+
+/* Hand-Drawn Doodle Box */
+.ca-doodle-box {
+  border-radius: 255px 15px 225px / 15px 225px 15px 255px;
+}
+
+/* Translucent Washi Tape Strips */
+.ca-tape-strip {
+  position: absolute;
+  opacity: 0.85;
+  filter: drop-shadow(0 2px 2px rgba(25, 21, 16, 0.18));
+}
+.ca-tape-strip::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0) 34%, rgba(255, 255, 255, 0.25) 60%, rgba(255, 255, 255, 0) 86%);
+}
+
+/* Chamfer Tag Badges */
+.ca-tag-chamfer {
+  clip-path: polygon(0 28%, 12% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+/* Chamfer Folder Tab */
+.ca-tab-chamfer {
+  clip-path: polygon(0 0, calc(100% - 60px) 0, 100% 100%, 0 100%);
+}
+
+@media (min-width: 640px) {
+  .ca-tab-chamfer {
+    clip-path: polygon(0 0, calc(100% - 76px) 0, 100% 100%, 0 100%);
+  }
+}
+
+/* Playful Keyframe Animations */
+@keyframes ca-wobble {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-2.5deg); }
+  75% { transform: rotate(2.5deg); }
+}
+
+@keyframes ca-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes ca-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+@keyframes pf-marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.ca-wobble {
+  animation: 3.2s ease-in-out infinite ca-wobble;
+}
+
+.ca-spin-slow {
+  animation: 10s linear infinite ca-spin;
+}
+
+.ca-blink {
+  animation: 1.5s ease-in-out infinite ca-blink;
+}
+
+.ca-marquee {
+  display: flex;
+  width: max-content;
+  animation: pf-marquee 25s linear infinite;
+}
+.ca-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--ca-surface);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ca-yellow);
+  border: 2px solid var(--ca-ink);
+  border-radius: 4px;
+}
